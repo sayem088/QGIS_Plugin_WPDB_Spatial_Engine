@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Distribution / packaging artifacts
+# Distribution & Packaging
 dist/
 build/
 *.egg-info/
@@ -36,15 +36,16 @@ $RECYCLE.BIN/
 *.sublime-project
 *.sublime-workspace
 
-# Temporary & Working Files
+# Local Developer Scripts & Scratch Files (Not needed in public repo)
+build_package.py
+demo.py
+docs/
+paper/
+requirements-dev.txt
+logo-wpdb.png
 *.log
 *.tmp
 temp/
 scratch/
 dhaka_corrected_output.csv
 IMPLEMENTATION_PLAN.md
-
-
-paper/
-
-paper/

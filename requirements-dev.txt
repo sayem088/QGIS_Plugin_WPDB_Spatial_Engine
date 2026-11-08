@@ -1,8 +1,0 @@
-# Development and testing requirements for WPDB Spatial Engine
-pytest>=7.0.0
-pytest-cov>=4.0.0
-pandas>=1.4.0
-numpy>=1.21.0
-shapely>=2.0.0
-earthengine-api>=1.0.0
-matplotlib>=3.5.0
