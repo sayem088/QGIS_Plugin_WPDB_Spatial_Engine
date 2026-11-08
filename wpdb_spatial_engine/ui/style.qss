@@ -1,0 +1,389 @@
+/* =============================================================================
+   WPDB Spatial Engine — Deep Solarized Cyan / Antigravity Dark QSS Theme
+   Base Canvas: #002b36 (User custom background)
+   Cards: #073642 | Recessed Inputs: #00212b | Borders: #0e4857
+   Engineered for QGIS 3.x / 4.x Desktop & High-DPI Workstations
+   ============================================================================= */
+
+/* ── Main Dialog Background ───────────────────────────────────────────────── */
+QDialog {
+    background-color: #002b36;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Inter', Roboto, sans-serif;
+    font-size: 9.5pt;
+    color: #f1f5f9;
+}
+
+/* ── All Labels — 100% Guaranteed High-Contrast Visibility ────────────────── */
+QLabel {
+    color: #e2e8f0;
+    font-size: 9.5pt;
+    background: transparent;
+}
+
+/* ── Header Banner Card ───────────────────────────────────────────────────── */
+QFrame#frameHeader {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #001f27, stop:0.5 #002b36, stop:1 #073642);
+    border: 1px solid #0e4857;
+    border-radius: 8px;
+    padding: 8px 14px;
+}
+
+/* ── Tab Widget ──────────────────────────────────────────────────────────── */
+QTabWidget::pane {
+    border: 1px solid #0e4857;
+    background-color: #00242e;
+    border-radius: 8px;
+    top: -1px;
+    padding: 8px;
+}
+
+QTabBar::tab {
+    background-color: #073642;
+    color: #93a1a1;
+    padding: 9px 20px;
+    margin-right: 4px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border: 1px solid #0e4857;
+    border-bottom: none;
+    font-weight: 600;
+    font-size: 9.5pt;
+}
+
+QTabBar::tab:selected {
+    background-color: #00242e;
+    color: #38bdf8;
+    border-top: 3px solid #38bdf8;
+    border-left: 1px solid #0e4857;
+    border-right: 1px solid #0e4857;
+    border-bottom: 2px solid #00242e;
+}
+
+QTabBar::tab:hover:!selected {
+    background-color: #0a4c5c;
+    color: #fdf6e3;
+}
+
+/* ── GroupBox Cards (Elevated Surface) ────────────────────────────────────── */
+QGroupBox {
+    background-color: #073642;
+    border: 1px solid #0e4857;
+    border-radius: 8px;
+    margin-top: 22px;
+    padding: 14px 14px 10px 14px;
+    font-weight: bold;
+    color: #f1f5f9;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    left: 14px;
+    top: 3px;
+    padding: 2px 10px;
+    background-color: #00242e;
+    color: #38bdf8;
+    border-radius: 4px;
+    border: 1px solid #0e4857;
+    font-size: 9.5pt;
+    font-weight: bold;
+}
+
+/* ── Form Inputs (Recessed Dark Surface) ──────────────────────────────────── */
+QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox {
+    background-color: #00212b;
+    border: 1px solid #0e4857;
+    border-radius: 5px;
+    padding: 5px 8px;
+    color: #f8fafc;
+    font-size: 9.5pt;
+    selection-background-color: #0284c7;
+    selection-color: #ffffff;
+}
+
+QLineEdit:focus, QComboBox:focus, QSpinBox:focus, QDoubleSpinBox:focus {
+    border: 1.5px solid #38bdf8;
+    background-color: #001a22;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 22px;
+    border-left: 1px solid #0e4857;
+    background-color: #073642;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #002b36;
+    color: #f8fafc;
+    selection-background-color: #0284c7;
+    selection-color: #ffffff;
+    border: 1px solid #0e4857;
+    padding: 4px;
+}
+
+/* ── CheckBoxes ──────────────────────────────────────────────────────────── */
+QCheckBox {
+    color: #cbd5e1;
+    font-size: 9.5pt;
+    spacing: 8px;
+    background: transparent;
+}
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #0e4857;
+    border-radius: 4px;
+    background-color: #00212b;
+}
+
+QCheckBox::indicator:hover {
+    border-color: #38bdf8;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #0284c7;
+    border-color: #38bdf8;
+    image: url(check.png);
+}
+
+/* ── General Buttons (Professional Neutral Slate-Teal) ────────────────────── */
+QPushButton {
+    background-color: #073642;
+    border: 1px solid #0e4857;
+    border-radius: 5px;
+    padding: 6px 14px;
+    font-weight: 600;
+    color: #e2e8f0;
+    font-size: 9.5pt;
+}
+
+QPushButton:hover {
+    background-color: #0a4c5c;
+    border-color: #14b8a6;
+    color: #ffffff;
+}
+
+QPushButton:pressed {
+    background-color: #00212b;
+}
+
+QPushButton:disabled {
+    background-color: #00242e;
+    color: #586e75;
+    border-color: #073642;
+}
+
+/* ── Primary Execution Action Buttons (Electric Azure / Sky) ──────────────── */
+QPushButton#btnRunCorridorExtraction,
+QPushButton#btnRunCorrection,
+QPushButton#btnRunGeePipeline {
+    background-color: #0284c7;
+    color: #ffffff;
+    border: 1px solid #0369a1;
+    font-size: 9.5pt;
+    font-weight: bold;
+    padding: 7px 16px;
+    border-radius: 6px;
+}
+
+QPushButton#btnRunCorridorExtraction:hover,
+QPushButton#btnRunCorrection:hover,
+QPushButton#btnRunGeePipeline:hover {
+    background-color: #0369a1;
+    border-color: #38bdf8;
+}
+
+QPushButton#btnRunCorridorExtraction:pressed,
+QPushButton#btnRunCorrection:pressed,
+QPushButton#btnRunGeePipeline:pressed {
+    background-color: #075985;
+}
+
+/* ── Map Canvas Buttons (Teal / Emerald) ─────────────────────────────────── */
+QPushButton#btnPlotCorridorCanvas,
+QPushButton#btnAddToMap,
+QPushButton#btnLoadGeeResults {
+    background-color: #0f766e;
+    color: #ffffff;
+    border: 1px solid #115e59;
+    font-weight: bold;
+    padding: 7px 14px;
+    border-radius: 5px;
+}
+
+QPushButton#btnPlotCorridorCanvas:hover,
+QPushButton#btnAddToMap:hover,
+QPushButton#btnLoadGeeResults:hover {
+    background-color: #115e59;
+    border-color: #14b8a6;
+}
+
+/* ── Export Buttons ──────────────────────────────────────────────────────── */
+QPushButton#btnExportCorridorCSV,
+QPushButton#btnExportCSV,
+QPushButton#btnExportGeeCsv {
+    background-color: #073642;
+    color: #e2e8f0;
+    border: 1px solid #0e4857;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 5px;
+}
+
+QPushButton#btnExportCorridorCSV:hover,
+QPushButton#btnExportCSV:hover,
+QPushButton#btnExportGeeCsv:hover {
+    background-color: #0a4c5c;
+    border-color: #38bdf8;
+}
+
+/* ── Diagnostic Plot Button (Academic Royal Blue) ─────────────────────────── */
+QPushButton#btnViewPlots {
+    background-color: #312e81;
+    color: #e0e7ff;
+    border: 1px solid #4338ca;
+    font-weight: bold;
+    padding: 7px 14px;
+    border-radius: 5px;
+}
+
+QPushButton#btnViewPlots:hover {
+    background-color: #3730a3;
+    border-color: #6366f1;
+    color: #ffffff;
+}
+
+/* ── Script Viewer Button ────────────────────────────────────────────────── */
+QPushButton#btnViewGeeScript {
+    background-color: #073642;
+    color: #38bdf8;
+    border: 1px solid #0284c7;
+    font-weight: bold;
+    padding: 7px 14px;
+    border-radius: 5px;
+}
+
+QPushButton#btnViewGeeScript:hover {
+    background-color: #0284c7;
+    color: #ffffff;
+}
+
+/* ── Table Widget ────────────────────────────────────────────────────────── */
+QTableWidget {
+    background-color: #00212b;
+    alternate-background-color: #002b36;
+    border: 1px solid #0e4857;
+    border-radius: 6px;
+    gridline-color: #073642;
+    selection-background-color: #0284c7;
+    selection-color: #ffffff;
+    font-size: 9pt;
+    color: #f1f5f9;
+}
+
+QHeaderView::section {
+    background-color: #073642;
+    color: #cbd5e1;
+    font-weight: bold;
+    padding: 6px;
+    border: none;
+    border-right: 1px solid #0e4857;
+    border-bottom: 2px solid #0e4857;
+}
+
+/* ── Log Console & Reports (Matrix Cyan Terminal) ─────────────────────────── */
+QTextEdit#textGeeLog,
+QTextEdit#textCorridorReport,
+QTextEdit#textReport {
+    background-color: #001b22;
+    color: #38bdf8;
+    border: 1px solid #0e4857;
+    border-radius: 6px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 9pt;
+    padding: 8px;
+    line-height: 1.4;
+}
+
+/* ── About Tab Browser ───────────────────────────────────────────────────── */
+QTextBrowser#textAbout {
+    background-color: #00242e;
+    border: 1px solid #0e4857;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 9.5pt;
+    color: #f1f5f9;
+}
+
+/* ── Progress Bar ────────────────────────────────────────────────────────── */
+QProgressBar {
+    background-color: #073642;
+    border-radius: 5px;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    height: 18px;
+    border: 1px solid #0e4857;
+}
+
+QProgressBar::chunk {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #0284c7, stop:0.5 #06b6d4, stop:1 #10b981);
+    border-radius: 4px;
+}
+
+/* ── Dialog Close Button ─────────────────────────────────────────────────── */
+QDialogButtonBox QPushButton {
+    min-width: 80px;
+}
+
+/* ── ScrollBars ──────────────────────────────────────────────────────────── */
+QScrollBar:vertical {
+    border: none;
+    background: #00212b;
+    width: 10px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: #073642;
+    min-height: 20px;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #0a4c5c;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar:horizontal {
+    border: none;
+    background: #00212b;
+    height: 10px;
+    margin: 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #073642;
+    min-width: 20px;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #0a4c5c;
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0px;
+}

@@ -1,0 +1,45 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging artifacts
+dist/
+build/
+*.egg-info/
+*.zip
+
+# Pytest / Coverage caches
+.pytest_cache/
+.coverage
+htmlcov/
+.cache/
+
+# Environments, Secrets & Credentials
+.env
+.env.*
+*.secret
+*.pem
+*.key
+*credential*
+*token*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# IDE / Editor folders
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Temporary & Working Files
+*.log
+*.tmp
+temp/
+scratch/
+dhaka_corrected_output.csv
+IMPLEMENTATION_PLAN.md

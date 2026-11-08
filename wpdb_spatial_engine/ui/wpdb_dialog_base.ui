@@ -1,0 +1,774 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WPDBDialogBase</class>
+ <widget class="QDialog" name="WPDBDialogBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>860</width>
+    <height>680</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>WPDB Spatial Engine: Riverine Spatial Feature Engineering &amp; Bias Auditor</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayoutMain">
+   <property name="spacing">
+    <number>8</number>
+   </property>
+   <property name="leftMargin">
+    <number>10</number>
+   </property>
+   <property name="topMargin">
+    <number>10</number>
+   </property>
+   <property name="rightMargin">
+    <number>10</number>
+   </property>
+   <property name="bottomMargin">
+    <number>10</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="frameHeader">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayoutHeader">
+      <property name="leftMargin">
+       <number>14</number>
+      </property>
+      <property name="topMargin">
+       <number>10</number>
+      </property>
+      <property name="rightMargin">
+       <number>14</number>
+      </property>
+      <property name="bottomMargin">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="lblHeaderIcon">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayoutHeaderText">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="lblHeaderTitle">
+          <property name="text">
+           <string>&lt;span style="font-size: 14pt; font-weight: 800; color: #f8fafc;"&gt;WPDB Spatial Engine&lt;/span&gt; &lt;span style="font-size: 8.5pt; font-weight: bold; background-color: #0284c7; color: #ffffff; border-radius: 4px; padding: 2px 7px;"&gt;v1.0.0&lt;/span&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblHeaderSubtitle">
+          <property name="text">
+           <string>&lt;span style="font-size: 9.5pt; color: #94a3b8;"&gt;Riverine Spatial Feature Engineering &amp;amp; Dilution Bias Auditor&lt;/span&gt;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacerHeader">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+
+     <!-- TAB 1: Corridor Extractor -->
+     <widget class="QWidget" name="tabCorridor">
+      <attribute name="title">
+       <string>Corridor Extractor</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayoutTab1">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QGroupBox" name="groupCorridorLayers">
+         <property name="title">
+          <string>1. Select QGIS Map Canvas Layers (Vector &amp;&amp; Raster)</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayoutCorridorLayers">
+          <property name="horizontalSpacing">
+           <number>12</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>8</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="lblStationLayer">
+            <property name="text">
+             <string>Monitoring Stations (Points):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="comboStationLayer"/>
+          </item>
+          <item row="0" column="2">
+           <widget class="QPushButton" name="btnRefreshLayers">
+            <property name="text">
+             <string>Refresh Layers</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="lblCenterlineLayer">
+            <property name="text">
+             <string>River Centerline (LineString):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="2">
+           <widget class="QComboBox" name="comboCenterlineLayer"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="lblLulcRaster">
+            <property name="text">
+             <string>Land Cover Raster (GeoTIFF):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" colspan="2">
+           <widget class="QComboBox" name="comboLulcRaster"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="lblWaterRaster">
+            <property name="text">
+             <string>Surface Water Mask Raster (GeoTIFF):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1" colspan="2">
+           <widget class="QComboBox" name="comboWaterRaster"/>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QGroupBox" name="groupCorridorParams">
+         <property name="title">
+          <string>2. Corridor Parameters &amp;&amp; Longitudinal Bins</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayoutCorridorParams">
+          <property name="horizontalSpacing">
+           <number>12</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>8</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="lblUpstreamDist">
+            <property name="text">
+             <string>Upstream Advective Reach (m):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSpinBox" name="spinUpstreamDistance">
+            <property name="minimum">
+             <number>100</number>
+            </property>
+            <property name="maximum">
+             <number>100000</number>
+            </property>
+            <property name="value">
+             <number>5000</number>
+            </property>
+            <property name="singleStep">
+             <number>500</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="lblBinSize">
+            <property name="text">
+             <string>Longitudinal Bin Size (m):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QSpinBox" name="spinBinSize">
+            <property name="minimum">
+             <number>10</number>
+            </property>
+            <property name="maximum">
+             <number>5000</number>
+            </property>
+            <property name="value">
+             <number>100</number>
+            </property>
+            <property name="singleStep">
+             <number>50</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="lblCorridorWidth">
+            <property name="text">
+             <string>Corridor Half-Width (m):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QSpinBox" name="spinCorridorWidth">
+            <property name="minimum">
+             <number>20</number>
+            </property>
+            <property name="maximum">
+             <number>5000</number>
+            </property>
+            <property name="value">
+             <number>300</number>
+            </property>
+            <property name="singleStep">
+             <number>50</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="lblTargetClass">
+            <property name="text">
+             <string>Target Land Cover Class Value:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QSpinBox" name="spinTargetClass">
+            <property name="minimum">
+             <number>0</number>
+            </property>
+            <property name="maximum">
+             <number>255</number>
+            </property>
+            <property name="value">
+             <number>6</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayoutCorridorButtons">
+         <property name="spacing">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="btnRunCorridorExtraction">
+           <property name="text">
+            <string>Run Corridor Extraction</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnPlotCorridorCanvas">
+           <property name="text">
+            <string>Plot to Map Canvas</string>
+           </property>
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnExportCorridorCSV">
+           <property name="text">
+            <string>Export Results (CSV)...</string>
+           </property>
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+
+       <item>
+        <widget class="QSplitter" name="splitterCorridor">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <widget class="QTableWidget" name="tableCorridorPreview"/>
+         <widget class="QTextEdit" name="textCorridorReport">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="placeholderText">
+           <string>Corridor longitudinal extraction metrics and non-water normalization statistics will appear here...</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+
+     <!-- TAB 2: Table Auditor -->
+     <widget class="QWidget" name="tabTable">
+      <attribute name="title">
+       <string>Table Auditor</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayoutTab2">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QGroupBox" name="groupInput">
+         <property name="title">
+          <string>1. Select Input Spatial Summary Table</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayoutFile">
+          <item>
+           <widget class="QLineEdit" name="lineInputPath">
+            <property name="placeholderText">
+             <string>Path to CSV file with buffer summary data...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnBrowseInput">
+            <property name="text">
+             <string>Browse CSV...</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupMapColumns">
+         <property name="title">
+          <string>2. Map Spatial Columns &amp;&amp; Bias Audit Settings</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayoutColumns">
+          <property name="horizontalSpacing">
+           <number>12</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>8</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="lblWaterCol">
+            <property name="text">
+             <string>Water Fraction Column:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="comboWaterCol"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="lblTargetCol">
+            <property name="text">
+             <string>Raw Land Cover Column:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="comboTargetCol"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="lblTargetName">
+            <property name="text">
+             <string>Target Class Label:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="lineTargetName">
+            <property name="text">
+             <string>built</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QCheckBox" name="checkPercentage">
+            <property name="text">
+             <string>Values are in Percentages (0 - 100%) rather than Ratios (0.0 - 1.0)</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" colspan="2">
+           <widget class="QCheckBox" name="checkAddBuffers">
+            <property name="text">
+             <string>Generate 1,000m river analysis buffer rings on canvas</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayoutButtons">
+         <property name="spacing">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="btnRunCorrection">
+           <property name="text">
+            <string>Run Table Audit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnViewPlots">
+           <property name="text">
+            <string>View Diagnostic Plots...</string>
+           </property>
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnAddToMap">
+           <property name="text">
+            <string>Plot to Map Canvas</string>
+           </property>
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnExportCSV">
+           <property name="text">
+            <string>Export Corrected CSV...</string>
+           </property>
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QSplitter" name="splitterResults">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <widget class="QTableWidget" name="tablePreview"/>
+         <widget class="QTextEdit" name="textReport">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="placeholderText">
+           <string>Correction report and theoretical law verification will be displayed here...</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+
+     <!-- TAB 3: Cloud Pipeline (GEE) -->
+     <widget class="QWidget" name="tabCloudGEE">
+      <attribute name="title">
+       <string>Cloud Pipeline (GEE)</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayoutTab3">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QGroupBox" name="groupGeeAuth">
+         <property name="title">
+          <string>1. Google Earth Engine Authentication &amp;&amp; Cloud Project</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayoutGeeAuth">
+          <property name="spacing">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="lblGeeProject">
+            <property name="text">
+             <string>GEE Cloud Project ID:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineGeeProject">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="placeholderText">
+             <string>Enter your Google Cloud GEE Project ID...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnAuthGee">
+            <property name="text">
+             <string>Initialize GEE</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblGeeStatus">
+            <property name="text">
+             <string>&lt;span style="color: #94a3b8; font-weight: bold;"&gt;&#9679; Ready to Initialize&lt;/span&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QGroupBox" name="groupGeeParams">
+         <property name="title">
+          <string>2. Cloud River Network &amp;&amp; Remote Sensing Configuration</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayoutGeeParams">
+          <property name="horizontalSpacing">
+           <number>12</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>8</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="lblGeeRiver">
+            <property name="text">
+             <string>River Network Reach:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="comboGeeRiver"/>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="lblGeeCollection">
+            <property name="text">
+             <string>LULC Satellite Collection:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QComboBox" name="comboGeeCollection"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="lblGeeTarget">
+            <property name="text">
+             <string>Target Extraction Class:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="comboGeeTarget"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="lblGeeBins">
+            <property name="text">
+             <string>Corridor Segmentation:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QLabel" name="lblGeeBinsVal">
+            <property name="text">
+             <string>&lt;b style="color: #38bdf8;"&gt;5.0 km upstream (50 bins x 100m)&lt;/b&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayoutGeeActions">
+         <property name="spacing">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="btnRunGeePipeline">
+           <property name="text">
+            <string>Run Cloud Pipeline</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnLoadGeeResults">
+           <property name="text">
+            <string>Plot to Map Canvas</string>
+           </property>
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnExportGeeCsv">
+           <property name="text">
+            <string>Export Cloud CSV...</string>
+           </property>
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnViewGeeScript">
+           <property name="text">
+            <string>View Cloud Script</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+
+       <item>
+        <widget class="QProgressBar" name="progressGee">
+         <property name="value">
+          <number>0</number>
+         </property>
+         <property name="textVisible">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QTextEdit" name="textGeeLog">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="placeholderText">
+          <string>Cloud execution log, Earth Engine tasks, and pipeline progress will appear here...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+
+     <!-- TAB 4: About & Academic Citation -->
+     <widget class="QWidget" name="tabAbout">
+      <attribute name="title">
+       <string>About &amp;&amp; Citation</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayoutTab4">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayoutAboutButtons">
+         <property name="spacing">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="btnCopyIeeeCitation">
+           <property name="text">
+            <string>Copy IEEE Citation (BibTeX)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnCopyJossCitation">
+           <property name="text">
+            <string>Copy JOSS Citation</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnOpenGithub">
+           <property name="text">
+            <string>GitHub Repository</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnOpenLinkedin">
+           <property name="text">
+            <string>LinkedIn Profile</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textAbout">
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>WPDBDialogBase</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>750</x>
+     <y>630</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>420</x>
+     <y>330</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
+
+

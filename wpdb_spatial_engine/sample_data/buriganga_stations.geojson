@@ -1,0 +1,147 @@
+{
+  "type": "FeatureCollection",
+  "name": "buriganga_stations",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.335107,
+          23.783754
+        ]
+      },
+      "properties": {
+        "station_id": "MIRPUR_BRIDGE",
+        "snap_dist_m": 12.0,
+        "along_chan_m": 3260.3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.337811,
+          23.762321
+        ]
+      },
+      "properties": {
+        "station_id": "MOHAMMADPUR",
+        "snap_dist_m": 6.52,
+        "along_chan_m": 6894.4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.34553,
+          23.743499
+        ]
+      },
+      "properties": {
+        "station_id": "BOSILA_BRIDGE",
+        "snap_dist_m": 11.76,
+        "along_chan_m": 10834.5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.357232,
+          23.726392
+        ]
+      },
+      "properties": {
+        "station_id": "HAZARIBAGH",
+        "snap_dist_m": 47.96,
+        "along_chan_m": 13256.8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.365099,
+          23.708389
+        ]
+      },
+      "properties": {
+        "station_id": "SATMASJID_ROAD",
+        "snap_dist_m": 30.63,
+        "along_chan_m": 15616.6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.39081313977216,
+          23.71145665338903
+        ]
+      },
+      "properties": {
+        "station_id": "CHADNIGHAT",
+        "snap_dist_m": 52.5,
+        "along_chan_m": 18815.1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.426625,
+          23.687262
+        ]
+      },
+      "properties": {
+        "station_id": "BCFB",
+        "snap_dist_m": 11.0,
+        "along_chan_m": 23850.2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.453111,
+          23.661726
+        ]
+      },
+      "properties": {
+        "station_id": "PAGLA",
+        "snap_dist_m": 36.83,
+        "along_chan_m": 27955.2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.471545,
+          23.640459
+        ]
+      },
+      "properties": {
+        "station_id": "FATULLAH",
+        "snap_dist_m": 47.04,
+        "along_chan_m": 31068.8
+      }
+    }
+  ]
+}
