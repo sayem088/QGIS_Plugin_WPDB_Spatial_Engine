@@ -6,9 +6,12 @@ Author: Md Abu Sayem Sarker
 Data Scientist & GeoAI Researcher
 """
 
+import logging
 import os
 from typing import Optional
 import pandas as pd
+
+logger = logging.getLogger(__name__)
 
 try:
     from qgis.PyQt.QtWidgets import (
@@ -16,7 +19,6 @@ try:
         QVBoxLayout,
         QHBoxLayout,
         QPushButton,
-        QComboBox,
         QLabel,
         QFileDialog,
         QMessageBox,
@@ -25,22 +27,7 @@ try:
     )
     from qgis.PyQt.QtCore import Qt
 except ImportError:
-    try:
-        from PyQt5.QtWidgets import (
-            QDialog,
-            QVBoxLayout,
-            QHBoxLayout,
-            QPushButton,
-            QComboBox,
-            QLabel,
-            QFileDialog,
-            QMessageBox,
-            QRadioButton,
-            QButtonGroup,
-        )
-        from PyQt5.QtCore import Qt
-    except ImportError:
-        QDialog = object
+    QDialog = object
 
 try:
     from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg, NavigationToolbar2QT
@@ -78,8 +65,8 @@ class WPDBChartsDialog(QDialog):
             if os.path.exists(qss_path):
                 with open(qss_path, "r", encoding="utf-8") as f:
                     self.setStyleSheet(f.read())
-        except Exception:
-            pass
+        except (OSError, IOError) as err:
+            logger.debug("Failed to load style.qss: %s", err)
 
         self._detect_plot_columns()
         self._build_ui()
@@ -88,7 +75,6 @@ class WPDBChartsDialog(QDialog):
     def _detect_plot_columns(self):
         """Identifies column names for water, naive, corrected, and bias metrics."""
         cols = self.df.columns
-        cols_lower = {c.lower(): c for c in cols}
 
         self.water_col = [c for c in cols if "water" in c.lower()][0] if any("water" in c.lower() for c in cols) else cols[0]
         self.naive_col = [c for c in cols if "naive" in c.lower()][0] if any("naive" in c.lower() for c in cols) else cols[1]

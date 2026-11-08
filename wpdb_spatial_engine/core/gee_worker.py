@@ -22,29 +22,25 @@ try:
     from qgis.PyQt.QtCore import QObject, QThread, pyqtSignal
     HAS_PYQT = True
 except ImportError:
-    try:
-        from PyQt5.QtCore import QObject, QThread, pyqtSignal
-        HAS_PYQT = True
-    except ImportError:
-        HAS_PYQT = False
-        # Mock class for headless unit test execution
-        class QObject:
+    HAS_PYQT = False
+    # Mock class for headless unit test execution
+    class QObject:
+        pass
+    class QThread:
+        def __init__(self, parent=None):
             pass
-        class QThread:
-            def __init__(self, parent=None):
-                pass
-            def start(self):
-                self.run()
-        def pyqtSignal(*types):
-            class _Signal:
-                def __init__(self):
-                    self._cbs = []
-                def connect(self, cb):
-                    self._cbs.append(cb)
-                def emit(self, *args):
-                    for cb in self._cbs:
-                        cb(*args)
-            return _Signal()
+        def start(self):
+            self.run()
+    def pyqtSignal(*types):
+        class _Signal:
+            def __init__(self):
+                self._cbs = []
+            def connect(self, cb):
+                self._cbs.append(cb)
+            def emit(self, *args):
+                for cb in self._cbs:
+                    cb(*args)
+        return _Signal()
 
 from .formula import calculate_wpdb_correction
 from .corridor_engine import RiverCenterline, WPDBFlowCorridorPipeline

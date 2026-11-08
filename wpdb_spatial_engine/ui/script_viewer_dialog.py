@@ -8,7 +8,10 @@ Author: Md Abu Sayem Sarker | Data Scientist & GeoAI Researcher
 Core Domains: GeoAI · Remote Sensing · Machine Learning · Software Engineering
 """
 
+import logging
 import os
+
+logger = logging.getLogger(__name__)
 
 try:
     from qgis.PyQt.QtWidgets import (
@@ -28,26 +31,9 @@ try:
     from qgis.PyQt.QtCore import Qt
     HAS_QT = True
 except ImportError:
-    try:
-        from PyQt5.QtWidgets import (
-            QDialog,
-            QVBoxLayout,
-            QHBoxLayout,
-            QLabel,
-            QPlainTextEdit,
-            QPushButton,
-            QFileDialog,
-            QMessageBox,
-            QRadioButton,
-            QButtonGroup,
-            QApplication,
-        )
-        from PyQt5.QtGui import QFont
-        from PyQt5.QtCore import Qt
-        HAS_QT = True
-    except ImportError:
-        HAS_QT = False
-        class QDialog:
+    HAS_QT = False
+    class QDialog:
+        def __init__(self, parent=None):
             pass
 
 
@@ -70,8 +56,8 @@ class GEEScriptViewerDialog(QDialog):
             if os.path.exists(qss_path):
                 with open(qss_path, "r", encoding="utf-8") as f:
                     self.setStyleSheet(f.read())
-        except Exception:
-            pass
+        except (OSError, IOError) as err:
+            logger.debug("Failed to load style.qss: %s", err)
 
         layout = QVBoxLayout(self)
 

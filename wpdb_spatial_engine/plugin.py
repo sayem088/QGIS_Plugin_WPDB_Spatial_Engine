@@ -6,16 +6,8 @@ Data Scientist & GeoAI Researcher
 """
 
 import os
-try:
-    from qgis.PyQt.QtGui import QIcon
-    from qgis.PyQt.QtWidgets import QAction
-except ImportError:
-    try:
-        from PyQt5.QtGui import QIcon
-        from PyQt5.QtWidgets import QAction
-    except ImportError:
-        QIcon = object
-        QAction = object
+from qgis.PyQt.QtGui import QIcon
+from qgis.PyQt.QtWidgets import QAction
 
 from .ui.wpdb_dialog import WPDBDialog
 
@@ -50,7 +42,7 @@ class WPDBPlugin:
         """Remove menu entry and toolbar icon from QGIS interface."""
         if self.iface and self.action:
             self.iface.removeToolBarIcon(self.action)
-            self.iface.removePluginMenu("&WPDB-Corrector", self.action)
+            self.iface.removePluginMenu("&WPDB Spatial Engine", self.action)
             del self.action
 
     def run(self):
@@ -58,11 +50,4 @@ class WPDBPlugin:
         if not self.dialog:
             self.dialog = WPDBDialog(iface=self.iface)
         self.dialog.show()
-        if hasattr(self.dialog, "exec"):
-            result = self.dialog.exec()
-        elif hasattr(self.dialog, "exec_"):
-            result = self.dialog.exec_()
-        else:
-            result = 0
-        return result
-
+        return self.dialog.exec()

@@ -5,9 +5,12 @@ Author: Md Abu Sayem Sarker
 Data Scientist & GeoAI Researcher
 """
 
+import logging
 import os
 from typing import Optional
 import pandas as pd
+
+logger = logging.getLogger(__name__)
 
 try:
     from qgis.PyQt import uic
@@ -18,27 +21,13 @@ try:
         QTableWidgetItem,
         QApplication,
     )
-    from qgis.PyQt.QtCore import Qt, QUrl
-    from qgis.PyQt.QtGui import QDesktopServices
+    from qgis.PyQt.QtCore import Qt, QUrl, QVariant
+    from qgis.PyQt.QtGui import QDesktopServices, QColor, QPalette, QPixmap
     from qgis.core import QgsProject, QgsMapLayerType
     HAS_QGIS = True
 except ImportError:
-    # Standalone / non-QGIS test fallback
-    try:
-        from PyQt5 import uic
-        from PyQt5.QtWidgets import (
-            QDialog,
-            QFileDialog,
-            QMessageBox,
-            QTableWidgetItem,
-            QApplication,
-        )
-        from PyQt5.QtCore import Qt, QUrl
-        from PyQt5.QtGui import QDesktopServices
-    except ImportError:
-        # Minimal mock for headless CI environments
-        uic = None
-        QDialog = object
+    uic = None
+    QDialog = object
     HAS_QGIS = False
 
 from ..core.table_corrector import WPDBTableCorrector
@@ -87,15 +76,11 @@ class WPDBDialog(_BaseDialog):
                 check_icon_path = os.path.join(os.path.dirname(__file__), "check.png").replace("\\", "/")
                 qss_data = qss_data.replace("check.png", check_icon_path)
                 self.setStyleSheet(qss_data)
-        except Exception:
-            pass
+        except (OSError, IOError) as err:
+            logger.debug("Failed to load style.qss: %s", err)
 
-        # Apply professional muted placeholder text color via QPalette (PyQt5 and PyQt6 compatible)
+        # Apply professional muted placeholder text color via QPalette
         try:
-            try:
-                from qgis.PyQt.QtGui import QPalette, QColor
-            except ImportError:
-                from PyQt5.QtGui import QPalette, QColor
             palette = self.palette()
             role = getattr(QPalette, "PlaceholderText", None)
             if role is None and hasattr(QPalette, "ColorRole"):
@@ -103,31 +88,25 @@ class WPDBDialog(_BaseDialog):
             if role is not None:
                 palette.setColor(role, QColor("#586e75"))
                 self.setPalette(palette)
-        except Exception:
-            pass
+        except (AttributeError, TypeError) as err:
+            logger.debug("Placeholder text styling skipped: %s", err)
 
         # Set header logo with preserved aspect ratio
         try:
             if hasattr(self, "lblHeaderIcon"):
                 candidates = [
-                    os.path.join(os.path.dirname(__file__), "..", "logo-wpdb.png"),
                     os.path.join(os.path.dirname(__file__), "..", "logo.png"),
-                    os.path.join(os.path.dirname(__file__), "..", "..", "logo-wpdb.png"),
                     os.path.join(os.path.dirname(__file__), "..", "icon.png"),
                 ]
                 for p in candidates:
                     if os.path.exists(p):
-                        try:
-                            from qgis.PyQt.QtGui import QPixmap
-                        except ImportError:
-                            from PyQt5.QtGui import QPixmap
                         pix = QPixmap(p)
                         if not pix.isNull():
                             self.lblHeaderIcon.setPixmap(pix)
                             self.lblHeaderIcon.setScaledContents(True)
                             break
-        except Exception:
-            pass
+        except (AttributeError, RuntimeError) as err:
+            logger.debug("Header logo rendering notice: %s", err)
 
     def _init_about_tab(self):
         """Populates Tab 4 — About & Citation — with an elegant single-column card layout."""
@@ -430,10 +409,7 @@ class WPDBDialog(_BaseDialog):
         try:
             from .charts_dialog import WPDBChartsDialog
             dlg = WPDBChartsDialog(self.corrected_df, parent=self)
-            if hasattr(dlg, "exec"):
-                dlg.exec()
-            elif hasattr(dlg, "exec_"):
-                dlg.exec_()
+            dlg.exec()
         except Exception as e:
             QMessageBox.critical(self, "Visualizer Error", f"Could not launch scientific plots:\n{str(e)}")
 
@@ -479,12 +455,6 @@ class WPDBDialog(_BaseDialog):
                 QgsFillSymbol,
                 QgsSingleSymbolRenderer,
             )
-            try:
-                from qgis.PyQt.QtCore import QVariant
-                from qgis.PyQt.QtGui import QColor
-            except ImportError:
-                from PyQt5.QtCore import QVariant
-                from PyQt5.QtGui import QColor
 
             bias_col = [c for c in self.corrected_df.columns if "bias" in c.lower()][0]
             corr_candidates = [c for c in self.corrected_df.columns if "corrected" in c.lower() or "nonwater" in c.lower()]
@@ -805,10 +775,6 @@ class WPDBDialog(_BaseDialog):
                 QgsFillSymbol,
                 QgsSingleSymbolRenderer,
             )
-            try:
-                from qgis.PyQt.QtCore import QVariant
-            except ImportError:
-                from PyQt5.QtCore import QVariant
 
             vl_bins = QgsVectorLayer("Polygon?crs=EPSG:4326", "WPDB Upstream Corridor Bins (5km)", "memory")
             pr_bins = vl_bins.dataProvider()
@@ -995,10 +961,6 @@ class WPDBDialog(_BaseDialog):
                 QgsLineSymbol,
                 QgsSingleSymbolRenderer,
             )
-            try:
-                from qgis.PyQt.QtCore import QVariant
-            except ImportError:
-                from PyQt5.QtCore import QVariant
 
             # 1. Add River Centerline Layer
             cl_path = self.gee_results.get("centerline_path")
@@ -1130,10 +1092,7 @@ class WPDBDialog(_BaseDialog):
             )
 
             dialog = GEEScriptViewerDialog(js_code, py_code, parent=self)
-            if hasattr(dialog, "exec"):
-                dialog.exec()
-            elif hasattr(dialog, "exec_"):
-                dialog.exec_()
+            dialog.exec()
         except Exception as e:
             QMessageBox.critical(self, "Script Generation Error", f"Could not generate GEE scripts:\n{str(e)}")
 
@@ -1149,10 +1108,6 @@ class WPDBDialog(_BaseDialog):
             "  organization={IEEE}\n"
             "}"
         )
-        try:
-            from qgis.PyQt.QtWidgets import QApplication
-        except ImportError:
-            from PyQt5.QtWidgets import QApplication
         cb = QApplication.clipboard()
         if cb:
             cb.setText(bibtex)
@@ -1169,10 +1124,6 @@ class WPDBDialog(_BaseDialog):
             "  publisher={The Open Journal}\n"
             "}"
         )
-        try:
-            from qgis.PyQt.QtWidgets import QApplication
-        except ImportError:
-            from PyQt5.QtWidgets import QApplication
         cb = QApplication.clipboard()
         if cb:
             cb.setText(bibtex)
@@ -1180,22 +1131,10 @@ class WPDBDialog(_BaseDialog):
 
     def open_github_repo(self):
         """Opens official GitHub repository in default browser."""
-        try:
-            from qgis.PyQt.QtGui import QDesktopServices
-            from qgis.PyQt.QtCore import QUrl
-        except ImportError:
-            from PyQt5.QtGui import QDesktopServices
-            from PyQt5.QtCore import QUrl
         QDesktopServices.openUrl(QUrl("https://github.com/sayem088/QGIS_Plugin_WPDB_Spatial_Engine"))
 
     def open_linkedin_profile(self):
         """Opens author LinkedIn profile in default browser."""
-        try:
-            from qgis.PyQt.QtGui import QDesktopServices
-            from qgis.PyQt.QtCore import QUrl
-        except ImportError:
-            from PyQt5.QtGui import QDesktopServices
-            from PyQt5.QtCore import QUrl
         QDesktopServices.openUrl(QUrl("https://www.linkedin.com/in/mdabusayemsarker/"))
 
     def refresh_spatial_layers(self):
@@ -1232,6 +1171,6 @@ class WPDBDialog(_BaseDialog):
                         self.comboLulcRaster.addItem(layer.name(), layer.id())
                     if hasattr(self, "comboWaterRaster"):
                         self.comboWaterRaster.addItem(layer.name(), layer.id())
-        except Exception:
-            pass
+        except Exception as err:
+            logger.debug("Layer refresh notice: %s", err)
 
