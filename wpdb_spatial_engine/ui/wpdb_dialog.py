@@ -21,7 +21,7 @@ try:
         QTableWidgetItem,
         QApplication,
     )
-    from qgis.PyQt.QtCore import Qt, QUrl, QVariant
+    from qgis.PyQt.QtCore import QUrl, QVariant
     from qgis.PyQt.QtGui import QDesktopServices, QColor, QPalette, QPixmap
     from qgis.core import QgsProject, QgsMapLayerType
     HAS_QGIS = True
@@ -138,7 +138,7 @@ class WPDBDialog(_BaseDialog):
             "  </p>"
 
             f"  <p style=\"{row}\"><span style=\"{label}\">Lead Architect &amp; Author&nbsp;&nbsp;</span>"
-            "    <span style=\"color:#f0f8ff;font-weight:600;\">Md Abu Sayem Sarker</span></p>"
+            f"    <span style=\"{value}\">Md Abu Sayem Sarker</span></p>"
 
             f"  <p style=\"{row}\"><span style=\"{label}\">Designation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>"
             f"    <span style=\"{link}\">Data Scientist &amp; GeoAI Researcher</span></p>"
@@ -770,7 +770,6 @@ class WPDBDialog(_BaseDialog):
                 QgsField,
                 QgsFeature,
                 QgsGeometry,
-                QgsPointXY,
                 QgsProject,
                 QgsFillSymbol,
                 QgsSingleSymbolRenderer,
@@ -955,7 +954,6 @@ class WPDBDialog(_BaseDialog):
                 QgsField,
                 QgsFeature,
                 QgsGeometry,
-                QgsPointXY,
                 QgsProject,
                 QgsFillSymbol,
                 QgsLineSymbol,
