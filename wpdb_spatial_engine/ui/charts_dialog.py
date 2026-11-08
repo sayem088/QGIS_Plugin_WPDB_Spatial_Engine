@@ -8,7 +8,6 @@ Data Scientist & GeoAI Researcher
 
 import logging
 import os
-from typing import Optional
 import pandas as pd
 
 logger = logging.getLogger(__name__)
@@ -20,12 +19,12 @@ try:
         QHBoxLayout,
         QPushButton,
         QLabel,
+        QComboBox,
         QFileDialog,
         QMessageBox,
         QRadioButton,
         QButtonGroup,
     )
-    from qgis.PyQt.QtCore import Qt
 except ImportError:
     QDialog = object
 
@@ -125,7 +124,7 @@ class WPDBChartsDialog(QDialog):
         self.combo_dpi.addItems(["300 DPI (Publication Standard)", "600 DPI (High Resolution)", "150 DPI (Screen Web)"])
         bottom_bar.addWidget(self.combo_dpi)
 
-        self.btn_export = QPushButton("💾 Save Figure for Paper...")
+        self.btn_export = QPushButton("Save Figure for Paper...")
         self.btn_export.setStyleSheet("font-weight: bold; padding: 6px 14px; background-color: #1976D2; color: white;")
         self.btn_export.clicked.connect(self.export_current_figure)
         bottom_bar.addWidget(self.btn_export)
