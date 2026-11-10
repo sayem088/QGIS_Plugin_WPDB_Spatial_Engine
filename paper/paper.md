@@ -11,19 +11,17 @@ tags:
   - bias correction
 authors:
   - name: Md Abu Sayem Sarker
-    orcid: 0009-0002-3920-5658
+    orcid: 0009-0008-0418-7833
     corresponding: true
-    affiliation: "1, 2"
+    affiliation: 1
   - name: Syed Nazmus Sakib
-    orcid: 0009-0008-1123-4567
-    affiliation: 3
+    orcid: 0000-0002-5272-7872
+    affiliation: "1, 2"
 affiliations:
  - name: Department of Software Engineering, Daffodil International University, Dhaka, Bangladesh
    index: 1
- - name: GeoAI Research Initiative, Dhaka, Bangladesh
-   index: 2
  - name: Department of Environmental Science and Disaster Management, Daffodil International University, Dhaka, Bangladesh
-   index: 3
+   index: 2
 date: 9 November 2026
 bibliography: paper.bib
 ---
