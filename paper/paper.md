@@ -93,25 +93,28 @@ The software interfaces directly with the QGIS Map Canvas via `qgis.core`. Corre
 
 # Empirical Case Study: Dhaka River Network
 
-To demonstrate empirical performance, WPDB Spatial Engine was applied across 11 water quality monitoring stations situated in the highly urbanized Dhaka megacity watershed, spanning the Buriganga and Shitalakhya river corridors [@sarker2026water]. 
+To demonstrate empirical performance, WPDB Spatial Engine was applied across 11 water quality monitoring stations situated in the highly urbanized Dhaka megacity watershed, spanning the Buriganga ($n=7$) and Shitalakhya ($n=4$) river systems [@sarker2026water]. 
 
-As summarized in Table \ref{tab:results}, open water area fractions ($f_{\text{water}}$) within standard 1,000 m buffers ranged from 32.8% at Mirpur Bridge to 65.2% at Narayanganj. Under naive GIS extraction, the built-up density at Hazaribagh (a dense industrial tannery corridor) was estimated at only $25.5\%$. When processed through WPDB Spatial Engine's non-water normalization, the true terrestrial built-up density was restored to $72.9\%$, correcting an artificial suppression of $47.4$ percentage points. Across all 11 stations, the software verified the mathematical identity $\Delta f = -f_{\text{water}} \cdot f_{\text{built, nw}}$ with zero residual deviation ($|\varepsilon| = 0.00\text{ pp}$).
+As summarized in Table \ref{tab:results}, open water area fractions ($f_{\text{water}}$) across monitoring buffers ranged from $43.01\%$ at Mirpur Bridge to $63.93\%$ at Satmasjid Road (mean $57.21\%$). Under naive GIS extraction, the built-up density at Hazaribagh (a dense industrial tannery corridor) was severely underestimated at only $33.66\%$. When processed through WPDB Spatial Engine's non-water normalization, the true terrestrial built-up density was restored to $88.80\%$, correcting an artificial dilution bias of $-55.14$ percentage points (with peak suppression reaching $-56.34\text{ pp}$ at Satmasjid Road). Across all 11 stations, uncorrected circular buffers deflated built-up fractions by $46.93\text{ pp}$ on average. The software verified the mathematical identity $\Delta f = -f_{\text{water}} \cdot f_{\text{built, nw}}$ with residual deviations bounded within $|\varepsilon| \le 0.01\text{ pp}$ across all stations.
 
-| Station ID | River Channel | Water Fraction ($f_{\text{water}}$) | Naive Built-Up ($f_{\text{naive}}$) | Corrected Built-Up ($f_{\text{nw}}$) | Dilution Bias ($\Delta f$) | Residual ($|\varepsilon|$) |
+| Station Name | River System | Water Fraction ($f_{\text{water}}$) | Naive Built-Up ($f_{\text{naive}}$) | Corrected Built-Up ($f_{\text{nw}}$) | Dilution Bias ($\Delta f$) | Residual ($|\varepsilon|$) |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| **ST-01** (Mirpur Bridge) | Buriganga | 32.8% | 38.4% | 57.1% | -18.7 pp | 0.00 pp |
-| **ST-02** (Hazaribagh) | Buriganga | 65.0% | 25.5% | 72.9% | -47.4 pp | 0.00 pp |
-| **ST-03** (Kamrangirchar) | Buriganga | 54.2% | 31.0% | 67.7% | -36.7 pp | 0.00 pp |
-| **ST-04** (Sadarghat) | Buriganga | 48.7% | 42.1% | 82.1% | -40.0 pp | 0.00 pp |
-| **ST-05** (Dhaleshwari Conf.) | Buriganga | 58.9% | 14.8% | 36.0% | -21.2 pp | 0.00 pp |
-| **ST-06** (Demra Ghat) | Shitalakhya | 39.5% | 28.2% | 46.6% | -18.4 pp | 0.00 pp |
-| **ST-07** (Tarabo Bridge) | Shitalakhya | 44.1% | 33.4% | 59.7% | -26.3 pp | 0.00 pp |
-| **ST-08** (Kanchpur) | Shitalakhya | 51.3% | 29.8% | 61.2% | -31.4 pp | 0.00 pp |
-| **ST-09** (Bandar) | Shitalakhya | 47.6% | 35.1% | 67.0% | -31.9 pp | 0.00 pp |
-| **ST-10** (Narayanganj) | Shitalakhya | 65.2% | 19.4% | 55.7% | -36.3 pp | 0.00 pp |
-| **ST-11** (Munshiganj Conf.) | Shitalakhya | 61.8% | 11.2% | 29.3% | -18.1 pp | 0.00 pp |
+| **Mirpur Bridge** | Buriganga | 43.01% | 36.03% | 63.22% | -27.19 pp | 0.00 pp |
+| **Bosila Bridge** | Buriganga | 51.89% | 38.74% | 80.52% | -41.78 pp | 0.00 pp |
+| **Hazaribagh** | Buriganga | 62.10% | 33.66% | 88.80% | -55.14 pp | 0.00 pp |
+| **Satmasjid Road** | Buriganga | 63.93% | 31.78% | 88.12% | -56.34 pp | 0.00 pp |
+| **Chadnighat** | Buriganga | 55.54% | 42.81% | 96.29% | -53.48 pp | 0.00 pp |
+| **Buriganga 1 (BCFB)** | Buriganga | 55.73% | 36.44% | 82.31% | -45.87 pp | 0.00 pp |
+| **Fatullah** | Buriganga | 61.91% | 25.45% | 66.81% | -41.36 pp | 0.00 pp |
+| *Buriganga Mean ($\mu$)* | *Buriganga* | *56.30%* | *34.99%* | *80.87%* | *-45.88 pp* | *0.00 pp* |
+| **Port Road** | Shitalakhya | 58.47% | 35.27% | 84.93% | -49.66 pp | 0.00 pp |
+| **Majira Demra Ghat** | Shitalakhya | 56.54% | 41.17% | 94.72% | -53.56 pp | 0.01 pp |
+| **Murapara (Rupgonj)** | Shitalakhya | 57.45% | 38.18% | 89.74% | -51.56 pp | 0.00 pp |
+| **Ghorashal** | Shitalakhya | 62.72% | 23.98% | 64.31% | -40.33 pp | 0.01 pp |
+| *Shitalakhya Mean ($\mu$)* | *Shitalakhya* | *58.80%* | *34.65%* | *83.43%* | *-48.78 pp* | *0.00 pp* |
+| **Multi-River Mean ($\mu$)** | **All Rivers** | **57.21%** | **34.87%** | **81.80%** | **-46.93 pp** | **0.00 pp** |
 
-: Empirical bias correction and mathematical invariance results for 1,000 m buffers across 11 monitoring stations in the Dhaka river network.\label{tab:results}
+: Empirical bias correction and mathematical invariance results across 11 monitoring stations in the Dhaka river network.\label{tab:results}
 
 # Quality Assurance & Testing
 
