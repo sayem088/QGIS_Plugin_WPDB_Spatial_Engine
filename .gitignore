@@ -9,9 +9,7 @@ build/
 *.egg-info/
 *.zip
 
-# Tests & Caches (Not needed for QGIS runtime or reproduction)
-tests/
-wpdb_spatial_engine/tests/
+# Tests & Caches
 .pytest_cache/
 .coverage
 htmlcov/
@@ -43,8 +41,6 @@ $RECYCLE.BIN/
 build_package.py
 demo.py
 docs/
-paper/
-requirements-dev.txt
 logo-wpdb.png
 wpdb_spatial_engine/logo-wpdb.png
 *.log

@@ -74,11 +74,38 @@ corrector.save_csv("dhaka_stations_corrected.csv")
 
 ---
 
+## 🧪 Running Automated Tests
+
+The test suite covers formula boundary conditions, zero-water limits, Shapely geometry snapping, CSV batch processing, packaging integrity, and GEE script generation:
+
+```bash
+pip install -r requirements-dev.txt
+pytest wpdb_spatial_engine/tests -v
+```
+
+All 36 tests execute headlessly without requiring a live QGIS GUI session.
+
+---
+
+## 🤝 Contributing
+
+We welcome community contributions from hydrologists, GIS practitioners, and software engineers! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, coding guidelines, and pull request procedures.
+
+---
+
 ## 📚 Citation
 
-If you use this software in academic research, please cite the underlying theoretical paper:
+If you use this software in academic research, please cite both the software and the underlying theoretical paper:
 
 ```bibtex
+@article{sarker2026wpdb,
+  title={{WPDB Spatial Engine: A QGIS Plugin and Python Library for Riverine Non-Water Spatial Feature Extraction and Dilution Bias Auditing}},
+  author={Sarker, Md Abu Sayem and Sakib, Syed Nazmus},
+  journal={Journal of Open Source Software},
+  year={2026},
+  publisher={The Open Journal}
+}
+
 @inproceedings{sarker2026water,
   author    = {Sarker, Md Abu Sayem and Sakib, Syed Nazmus},
   title     = {Water Pixel Dilution Bias: A Systematic Measurement Error in Riverine Spatial Feature Engineering},
