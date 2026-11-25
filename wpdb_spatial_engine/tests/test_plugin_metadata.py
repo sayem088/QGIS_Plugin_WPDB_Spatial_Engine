@@ -89,6 +89,12 @@ def test_ui_xml_validity():
     assert "btnRunGeePipeline" in widget_names
     assert "btnAuthGee" in widget_names
 
+    # Tab 4 widgets
+    assert "btnCopyIeeeCitation" in widget_names
+    assert "btnOpenFeedback" in widget_names
+    assert "btnOpenGithub" in widget_names
+    assert "btnOpenLinkedin" in widget_names
+
 
 def test_class_factory_structure():
     """Verify classFactory can be imported and referenced."""

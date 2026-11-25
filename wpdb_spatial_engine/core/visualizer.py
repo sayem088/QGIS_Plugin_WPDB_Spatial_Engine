@@ -1,6 +1,6 @@
 """
-Scientific visualization engine for WPDB-Corrector.
-Generates publication-quality figures (300 DPI) for IEEE CSDE 2026 and JOSS.
+Scientific visualization engine for WPDB Spatial Engine.
+Generates publication-quality figures (300 DPI) for scientific workflows.
 
 Author: Md Abu Sayem Sarker
 Data Scientist & GeoAI Researcher
@@ -18,7 +18,7 @@ from matplotlib.figure import Figure
 
 
 def set_publication_style():
-    """Configures matplotlib rcParams for IEEE / JOSS publication standards."""
+    """Configures matplotlib rcParams for scientific publication standards."""
     plt.rcParams.update({
         "font.family": "sans-serif",
         "font.sans-serif": ["DejaVu Sans", "Helvetica", "Arial"],
@@ -171,7 +171,7 @@ def create_combined_audit_figure(
 ) -> Figure:
     """
     Creates a 2-panel composite figure (Panel A: Hyperbola Curve, Panel B: Station Audit)
-    formatted for IEEE double-column / JOSS layout with clean spacing and no collisions.
+    formatted for scientific publication layouts with clean spacing and no collisions.
     """
     set_publication_style()
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9.2, 4.2), dpi=100)

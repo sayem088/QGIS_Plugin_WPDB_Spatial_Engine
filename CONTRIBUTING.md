@@ -27,7 +27,7 @@ We are committed to providing a friendly, safe, and welcoming environment for al
    ```
 3. Run the automated test suite:
    ```bash
-   pytest tests/ -v
+   pytest wpdb_spatial_engine/tests -v
    ```
 
 ### Code Style and Standards
@@ -44,13 +44,15 @@ We are committed to providing a friendly, safe, and welcoming environment for al
 2. Write unit tests for new functionality in `tests/`.
 3. Verify that all existing and new unit tests pass:
    ```bash
-   pytest tests/ -v
+   pytest wpdb_spatial_engine/tests -v
    ```
 4. Commit your changes with clear, descriptive commit messages.
 5. Push to your fork and submit a Pull Request to the `main` branch.
 
-## Contact
-For research collaboration, inquiries, or bug reports:
-- **Lead Author & Maintainer:** Md Abu Sayem Sarker ([mdabusayemsarker9@gmail.com](mailto:mdabusayemsarker9@gmail.com))
+## Feedback & Community
+For bug reports, feature requests, or research feedback (no email required):
+- **Quick Feedback Form (No GitHub login needed):** [Google Feedback Form](https://forms.gle/GJkDiATXxNVYtudG7)
+- **Bug Reports & Feature Requests:** [GitHub Issues](https://github.com/sayem088/QGIS_Plugin_WPDB_Spatial_Engine/issues)
+- **Questions & Discussions:** [GitHub Discussions](https://github.com/sayem088/QGIS_Plugin_WPDB_Spatial_Engine/discussions)
 - **GitHub Repository:** [https://github.com/sayem088/QGIS_Plugin_WPDB_Spatial_Engine](https://github.com/sayem088/QGIS_Plugin_WPDB_Spatial_Engine)
 

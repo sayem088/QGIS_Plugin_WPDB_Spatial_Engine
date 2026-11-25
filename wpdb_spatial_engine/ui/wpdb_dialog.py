@@ -131,7 +131,7 @@ class WPDBDialog(_BaseDialog):
             "  <h2 style=\"margin:0 0 2px 0;color:#f0f8ff;font-size:14pt;letter-spacing:0.3px;\">"
             "    WPDB Spatial Engine"
             "    <span style=\"font-size:8pt;background:#0284c7;color:#fff;"
-            "    padding:2px 8px;border-radius:4px;margin-left:8px;vertical-align:middle;\">v1.0.0</span>"
+            "    padding:2px 8px;border-radius:4px;margin-left:8px;vertical-align:middle;\">v1.0.3</span>"
             "  </h2>"
             "  <p style=\"margin:0 0 14px 0;color:#3a8fa8;font-size:9.5pt;\">"
             "    Riverine Spatial Feature Engineering &amp; Dilution Bias Auditor"
@@ -146,21 +146,26 @@ class WPDBDialog(_BaseDialog):
             f"  <p style=\"{row}\"><span style=\"{label}\">Domain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>"
             "    <span style=\"color:#c8dfe8;\">Spatial Data Science &middot; Remote Sensing &middot; Hydro-Informatics</span></p>"
 
-            f"  <p style=\"{row}\"><span style=\"{label}\">Research Inquiries&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>"
-            f"    <a href=\"mailto:mdabusayemsarker9@gmail.com\" style=\"{link}\">"
-            "    mdabusayemsarker9@gmail.com</a></p>"
-
             f"  <div style=\"{inner}\">"
             "    <p style=\"margin:0 0 5px 0;color:#7fb3c8;font-size:8.5pt;font-weight:600;"
-            "    letter-spacing:0.5px;text-transform:uppercase;\">Online Profiles &amp; Repositories</p>"
-            f"    <p style=\"{row}\">LinkedIn &nbsp;&nbsp;&nbsp;"
+            "    letter-spacing:0.5px;text-transform:uppercase;\">Feedback, Community &amp; Links</p>"
+            f"    <p style=\"{row}\">Quick Feedback &nbsp;"
+            f"      <a href=\"https://forms.gle/GJkDiATXxNVYtudG7\" style=\"{link}\">"
+            "      Google Feedback Form (No login needed)</a></p>"
+            f"    <p style=\"{row}\">Bug Reports &nbsp;&nbsp;&nbsp;&nbsp;"
+            f"      <a href=\"https://github.com/sayem088/QGIS_Plugin_WPDB_Spatial_Engine/issues\" style=\"{link}\">"
+            "      GitHub Issues</a></p>"
+            f"    <p style=\"{row}\">Q&amp;A / Ideas &nbsp;&nbsp;&nbsp;&nbsp;"
+            f"      <a href=\"https://github.com/sayem088/QGIS_Plugin_WPDB_Spatial_Engine/discussions\" style=\"{link}\">"
+            "      GitHub Discussions</a></p>"
+            f"    <p style=\"{row}\">QGIS Store &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+            f"      <a href=\"https://plugins.qgis.org/plugins/wpdb_spatial_engine/\" style=\"{link}\">"
+            "      QGIS Plugin Repository</a></p>"
+            f"    <p style=\"{row}\">LinkedIn &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
             f"      <a href=\"https://www.linkedin.com/in/mdabusayemsarker/\" style=\"{link}\">"
             "      Abu Sayem Sarker</a></p>"
-            f"    <p style=\"{row}\">GitHub &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+            f"    <p style=\"{row}\">GitHub &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
             f"      <a href=\"https://github.com/sayem088\" style=\"{link}\">@sayem088</a></p>"
-            f"    <p style=\"{row}\">Repository &nbsp;"
-            f"      <a href=\"https://github.com/sayem088/QGIS_Plugin_WPDB_Spatial_Engine\" style=\"{link}\">"
-            "      WPDB Spatial Engine</a></p>"
             "  </div>"
             "</div>"
 
@@ -193,7 +198,9 @@ class WPDBDialog(_BaseDialog):
             "    &ldquo;Water Pixel Dilution Bias: A Systematic Measurement Error in Riverine Spatial"
             "    Feature Engineering.&rdquo;"
             "    <i>Proceedings of the 11th IEEE Asia-Pacific Conference on Computer Science and"
-            "    Data Engineering (IEEE CSDE 2026)</i>, Cox&rsquo;s Bazar, Bangladesh."
+            "    Data Engineering (IEEE CSDE 2026)</i>, Cox&rsquo;s Bazar, Bangladesh (Accepted; in press). "
+            "    <a href=\"https://www.researchgate.net/publication/417659602_Water_Pixel_Dilution_Bias_A_Systematic_Measurement_Error_in_Riverine_Spatial_Feature_Engineering\" "
+            f"    style=\"{link}\">[Preprint]</a>"
             "  </div>"
             f"  <p style=\"margin:10px 0 0 0;{dim}\">"
             "    Licensed under the MIT License. &nbsp;Copyright &copy; 2026 Md Abu Sayem Sarker."
@@ -270,8 +277,8 @@ class WPDBDialog(_BaseDialog):
         # Tab 4: About & Citation Actions
         if hasattr(self, "btnCopyIeeeCitation"):
             self.btnCopyIeeeCitation.clicked.connect(self.copy_ieee_citation)
-        if hasattr(self, "btnCopyJossCitation"):
-            self.btnCopyJossCitation.clicked.connect(self.copy_joss_citation)
+        if hasattr(self, "btnOpenFeedback"):
+            self.btnOpenFeedback.clicked.connect(self.open_feedback_form)
         if hasattr(self, "btnOpenGithub"):
             self.btnOpenGithub.clicked.connect(self.open_github_repo)
         if hasattr(self, "btnOpenLinkedin"):
@@ -1095,15 +1102,17 @@ class WPDBDialog(_BaseDialog):
             QMessageBox.critical(self, "Script Generation Error", f"Could not generate GEE scripts:\n{str(e)}")
 
     def copy_ieee_citation(self):
-        """Copies IEEE CSDE 2026 BibTeX citation to clipboard."""
+        """Copies IEEE CSDE 2026 BibTeX citation (accepted/preprint) to clipboard."""
         bibtex = (
             "@inproceedings{sarker2026water,\n"
             "  title={Water Pixel Dilution Bias: A Systematic Measurement Error in Riverine Spatial Feature Engineering},\n"
-            "  author={Sarker, Md Abu Sayem and Sakib, Sadman Nazmus},\n"
+            "  author={Sarker, Md Abu Sayem and Sakib, Syed Nazmus},\n"
             "  booktitle={Proceedings of the 11th IEEE Asia-Pacific Conference on Computer Science and Data Engineering (IEEE CSDE 2026)},\n"
             "  year={2026},\n"
             "  address={Cox's Bazar, Bangladesh},\n"
-            "  organization={IEEE}\n"
+            "  organization={IEEE},\n"
+            "  url={https://www.researchgate.net/publication/417659602_Water_Pixel_Dilution_Bias_A_Systematic_Measurement_Error_in_Riverine_Spatial_Feature_Engineering},\n"
+            "  note={Accepted; in press (IEEE Xplore), preprint available on ResearchGate}\n"
             "}"
         )
         cb = QApplication.clipboard()
@@ -1111,21 +1120,9 @@ class WPDBDialog(_BaseDialog):
             cb.setText(bibtex)
         QMessageBox.information(self, "Citation Copied", "IEEE CSDE 2026 BibTeX citation copied to clipboard!")
 
-    def copy_joss_citation(self):
-        """Copies JOSS BibTeX citation to clipboard."""
-        bibtex = (
-            "@article{sarker2026wpdb,\n"
-            "  title={WPDB Spatial Engine: Riverine Non-Water Spatial Feature Extractor & Dilution Bias Auditor},\n"
-            "  author={Sarker, Md Abu Sayem},\n"
-            "  journal={Journal of Open Source Software},\n"
-            "  year={2026},\n"
-            "  publisher={The Open Journal}\n"
-            "}"
-        )
-        cb = QApplication.clipboard()
-        if cb:
-            cb.setText(bibtex)
-        QMessageBox.information(self, "Citation Copied", "JOSS BibTeX citation copied to clipboard!")
+    def open_feedback_form(self):
+        """Opens community feedback Google Form in default browser."""
+        QDesktopServices.openUrl(QUrl("https://forms.gle/GJkDiATXxNVYtudG7"))
 
     def open_github_repo(self):
         """Opens official GitHub repository in default browser."""

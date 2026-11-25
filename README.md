@@ -2,13 +2,15 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python: 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
+[![QGIS Plugin](https://img.shields.io/badge/QGIS%20Plugin-Repository-green.svg)](https://plugins.qgis.org/plugins/wpdb_spatial_engine/)
 [![Tests: Passing](https://img.shields.io/badge/tests-36%20passed-brightgreen.svg)]()
-[![Theory: IEEE CSDE 2026](https://img.shields.io/badge/Theory-IEEE%20CSDE%202026-orange.svg)](https://ieeexplore.ieee.org)
+[![Paper: IEEE CSDE 2026 Preprint](https://img.shields.io/badge/Paper-IEEE%20CSDE%202026%20(Preprint)-orange.svg)](https://www.researchgate.net/publication/417659602_Water_Pixel_Dilution_Bias_A_Systematic_Measurement_Error_in_Riverine_Spatial_Feature_Engineering)
+[![Feedback](https://img.shields.io/badge/Feedback-Google%20Form-teal.svg)](https://forms.gle/GJkDiATXxNVYtudG7)
 
 **Riverine Non-Water Spatial Feature Engineering & Dilution Bias Architecture**  
 *Developed and maintained by **Md Abu Sayem Sarker** (Data Scientist & GeoAI Researcher).*  
 *Core Domains: GeoAI · Remote Sensing · Machine Learning · Software Engineering*  
-*Inquiries & Research Feedback: [mdabusayemsarker9@gmail.com](mailto:mdabusayemsarker9@gmail.com) | LinkedIn: [Abu Sayem Sarker](https://www.linkedin.com/in/mdabusayemsarker/) | GitHub: [@sayem088](https://github.com/sayem088)*
+*Feedback & Community: [Quick Feedback Form](https://forms.gle/GJkDiATXxNVYtudG7) | [GitHub Issues](https://github.com/sayem088/QGIS_Plugin_WPDB_Spatial_Engine/issues) | [GitHub Discussions](https://github.com/sayem088/QGIS_Plugin_WPDB_Spatial_Engine/discussions) | [LinkedIn](https://www.linkedin.com/in/mdabusayemsarker/) | GitHub: [@sayem088](https://github.com/sayem088)*
 
 ---
 
@@ -87,32 +89,31 @@ All 36 tests execute headlessly without requiring a live QGIS GUI session.
 
 ---
 
-## 🤝 Contributing
+## 🤝 Feedback & Contributing
 
-We welcome community contributions from hydrologists, GIS practitioners, and software engineers! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, coding guidelines, and pull request procedures.
+We welcome community feedback, bug reports, and contributions from hydrologists, GIS practitioners, and software engineers!
+
+* **Quick Feedback (No Login Required):** [Submit via Google Feedback Form](https://forms.gle/GJkDiATXxNVYtudG7)
+* **Bug Reports & Feature Requests:** [Open a GitHub Issue](https://github.com/sayem088/QGIS_Plugin_WPDB_Spatial_Engine/issues)
+* **Questions & Research Ideas:** [Join GitHub Discussions](https://github.com/sayem088/QGIS_Plugin_WPDB_Spatial_Engine/discussions)
+* **Development Guidelines:** See [CONTRIBUTING.md](CONTRIBUTING.md) and [docs/tutorial.md](docs/tutorial.md).
 
 ---
 
 ## 📚 Citation
 
-If you use this software in academic research, please cite both the software and the underlying theoretical paper:
+If you use this software in academic research, please cite the foundational conference study:
 
 ```bibtex
-@article{sarker2026wpdb,
-  title={{WPDB Spatial Engine: A QGIS Plugin and Python Library for Riverine Non-Water Spatial Feature Extraction and Dilution Bias Auditing}},
-  author={Sarker, Md Abu Sayem and Sakib, Syed Nazmus},
-  journal={Journal of Open Source Software},
-  year={2026},
-  publisher={The Open Journal}
-}
-
 @inproceedings{sarker2026water,
   author    = {Sarker, Md Abu Sayem and Sakib, Syed Nazmus},
   title     = {Water Pixel Dilution Bias: A Systematic Measurement Error in Riverine Spatial Feature Engineering},
   booktitle = {Proceedings of the 11th IEEE Asia-Pacific Conference on Computer Science and Data Engineering (IEEE CSDE 2026)},
   year      = {2026},
   address   = {Cox's Bazar, Bangladesh},
-  publisher = {IEEE}
+  publisher = {IEEE},
+  url       = {https://www.researchgate.net/publication/417659602_Water_Pixel_Dilution_Bias_A_Systematic_Measurement_Error_in_Riverine_Spatial_Feature_Engineering},
+  note      = {Accepted; in press (IEEE Xplore), preprint available on ResearchGate}
 }
 ```
 
